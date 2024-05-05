@@ -26,12 +26,12 @@ const Filters = ({ filters, setFilters }) => {
     // Reset the corresponding filter value when changing the filter type
     setFilters({
       ...filters,
-      [newFilterType]: ''// Ensures that when switching filters, the input starts empty.
+      [newFilterType]: ''
     });
   };
 
   const handleFilterValueChange = (event) => {
-    // Update the value for the currently selected filter
+
 
     setFilters({
       ...filters,

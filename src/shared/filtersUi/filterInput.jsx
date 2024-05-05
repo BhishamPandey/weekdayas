@@ -1,29 +1,17 @@
 import React from 'react';
 import { Box, TextField, RadioGroup, FormControlLabel, Radio, FormControl, FormLabel } from '@mui/material';
 
-/**
- * FilterInput Component: 
- * Renders a dynamic filter input based on the selected filter type.
- * 
- * Props:
- *  - selectedFilter (string): The currently selected filter key.
- *  - filters (object): The current filter state object.
- *  - handleFilterValueChange (function): Function to handle changes in text input filters.
- *  - handleWorkTypeChange (function): Function to handle changes in work type radio buttons.
- *  - filterOptions (array): An array of objects defining available filter options with key and name properties.
- */
 const FilterInput = ({ selectedFilter, filters, handleFilterValueChange, handleWorkTypeChange, filterOptions }) => {
-  // Render different input types based on the selected filter
   return (
-    <Box sx={{ mb: 2 }}> {/* Add margin bottom for spacing */}
+    <Box sx={{ mb: 2 }}> 
       {selectedFilter === 'workType' ? (
-        <FormControl component="fieldset"> {/* Group radio buttons */}
+        <FormControl component="fieldset"> 
           <FormLabel component="legend">Work Type</FormLabel> {/* Label for work type selection */}
           <RadioGroup
             row // Arrange radio buttons horizontally
             name="workType" // Name attribute for radio buttons
-            value={filters.workType || ''} // Set initial value based on filter state
-            onChange={handleWorkTypeChange} // Function to handle radio button changes
+            value={filters.workType || ''} 
+            onChange={handleWorkTypeChange} 
           >
             <FormControlLabel value="remote" control={<Radio />} label="Remote" /> {/* Remote option */}
             <FormControlLabel value="onsite" control={<Radio />} label="On-site" /> {/* On-site option */}
