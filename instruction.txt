@@ -24,4 +24,15 @@ go to project Directory and open it in vscode then open terminal
 4. **Start the Development Server**
    ```bash
      npm start
-This will start the local server, usually on port 3000. Your default web browser should open automatically to http://localhost:3000. If it doesn't, you can manually open a browser and enter this URL.
+This will start the local server, usually on port 3000. 
+Your default web browser should open automatically to http://localhost:3000. 
+If it doesn't, you can manually open a browser and enter this URL.
+
+Requirements
+
+"react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@mui/material": "^5.2.1",
+    "react-infinite-scroll-component": "^6.0.0"
