@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
+// Asynchronous thunk for fetching jobs
 export const fetchJobs = createAsyncThunk(
     'jobs/fetchJobs',
     async ({ offset,filters }, { getState }) => {
@@ -19,7 +19,7 @@ export const fetchJobs = createAsyncThunk(
             headers: myHeaders,
             body
         };
-        
+        //calling Api by using REACT_APP_API_BASE from .env file to not show actual api
         const apiUrl = process.env.REACT_APP_API_BASE;
         const response = await fetch(apiUrl, requestOptions);
         const data = await response.json();
@@ -49,7 +49,7 @@ const jobsSlice = createSlice({
     //creation of Reducers for filtering
     reducers: {
         setFilteredJobs: (state, action) => {
-            
+            //getting data from filters which is disspatched from jobList.jsx
             const { location, jobRole, minExp, minJdSalary, workType,companyName } = action.payload;
             // getting all the data passed into state for filtering
             state.filter = { location: location.toLowerCase(), jobRole: jobRole.toLowerCase(), minExp: minExp, minJdSalary: minJdSalary, workType: workType,companyName: companyName.toLowerCase() }
@@ -58,7 +58,7 @@ const jobsSlice = createSlice({
                 const jobRoleMatches = job.jobRole.toLowerCase().includes(state.filter.jobRole);
                 //matching the minExp and null case
                 const minExpMatches = state.filter.minExp ? job.minExp >= state.filter.minExp : true;
-                
+                //handling the minimumSalary and null case
                 const minSalaryMatches = state.filter.minJdSalary ? job.minJdSalary >= state.filter.minJdSalary : true;
                 const nameOfCompanyMatches =job.companyName.toLowerCase().includes(state.filter.companyName);
                 let workTypeMatches = true; // Assume all jobs match initially
@@ -75,11 +75,12 @@ const jobsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            
+            //adding extra reducers ,
+            //pending for if no data is loaded till now or during firstTime rendering of Project or onRefreshing
             .addCase(fetchJobs.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(fetchJobs.fulfilled, (state, action) => { 
+            .addCase(fetchJobs.fulfilled, (state, action) => { //fetching data when givendata is whole rendered so new data can be fetched
                 state.allJobs = [...state.allJobs, ...action.payload];
                 state.visibleJobs = state.allJobs.filter(job => {// matching all the condtions for filtering as above reducers
                     const jobLocationMatches = job.location.toLowerCase().includes(state.filter.location);
