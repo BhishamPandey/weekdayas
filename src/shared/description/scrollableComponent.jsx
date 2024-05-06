@@ -2,15 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Button } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-/**
- * ScrollableComponent: A reusable component for displaying content with expandable functionality.
- * 
- * Props:
- *  - content (required): The content to be displayed within the component.
- *  - initialExpand (optional): Boolean flag indicating whether the content is initially expanded (default: false).
- *  - maxHeight (optional): String defining the maximum height of the content when collapsed (default: '5.2em').
- *  - style (optional): Object containing additional styles for the component.
- */
+
 const ScrollableComponent = ({ content, initialExpand = false, maxHeight = '5.2em', style = {} }) => {
   // State to manage the expanded state of the content
   const [expandText, setExpandText] = useState(initialExpand);
@@ -18,9 +10,7 @@ const ScrollableComponent = ({ content, initialExpand = false, maxHeight = '5.2e
   // useRef hook to reference the scrollable div element
   const scrollableDivRef = useRef(null);
 
-  /**
-   * toggleText function: Handles toggling the expanded state of the content and scrolls to the top when collapsing.
-   */
+  
   const toggleText = () => {
     setExpandText(!expandText);
     if (scrollableDivRef.current && !expandText) {
