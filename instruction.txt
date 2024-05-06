@@ -1,0 +1,27 @@
+1. **Clone the Repository**
+
+   Clone this repository to your local machine using the following command:
+
+   ```bash
+   git clone https://github.com/BhishamPandey/weekdayas.git
+
+OR
+
+download the zip file from the link of my repository and extract it.
+
+2. **Go to Project Directory**
+   ```bash
+    cd ./candidateApplicationPlatform
+
+OR
+
+go to project Directory and open it in vscode then open terminal
+
+
+3. **install neccessary packages and get node_modules folder**
+   ```bash
+    npm i
+4. **Start the Development Server**
+   ```bash
+     npm start
+This will start the local server, usually on port 3000. Your default web browser should open automatically to http://localhost:3000. If it doesn't, you can manually open a browser and enter this URL.
